@@ -18,6 +18,8 @@ class AlgoPage extends Component {
 
   render() {
 
+    //parse csv
+
     return(
       <div className = "algopage">
         <h1>hi</h1>
