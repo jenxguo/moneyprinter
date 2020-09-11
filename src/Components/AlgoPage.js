@@ -18,8 +18,8 @@ class AlgoPage extends Component {
 
   render() {
     const options = [
-      {name: 'Swedish', value: 'sv'},
-      {name: 'English', value: 'en'},
+    {name: 'Swedish', value: 'sv'},
+    {name: 'English', value: 'en'},
     ];
 
     //parse csv
@@ -27,6 +27,7 @@ class AlgoPage extends Component {
     return(
       <div className = "algopage">
         <h1>Create an Algorithm</h1>
+        <SelectSearch options={options} search='true' value="sv" name="language" placeholder="Choose your language" />
         <select class="dropdown" multiple="">
             <option value="">State</option>
             <option value="AL">Alabama</option>
