@@ -1,12 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>money printer go brrrr</h1>
-    </div>
-  );
+import AlgoPage from './Components/AlgoPage'
+
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+  render() {
+    return(
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/create-algo">
+            <div className="App">
+              <AlgoPage/>
+            </div>
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
