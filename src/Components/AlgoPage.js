@@ -17,10 +17,21 @@ class AlgoPage extends Component {
   }
 
   render() {
+    const options = [
+      {name: 'Swedish', value: 'sv'},
+      {name: 'English', value: 'en'},
+    ];
 
     return(
       <div className = "algopage">
-        <h1>hi</h1>
+        <h1>Create an Algorithm</h1>
+        <select class="dropdown" multiple="">
+            <option value="">State</option>
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+        </select>
       </div>
     )
   }
