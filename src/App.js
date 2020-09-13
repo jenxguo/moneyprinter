@@ -16,6 +16,10 @@ class App extends Component {
     return(
       <BrowserRouter>
         <Switch>
+          <Route exact path="/">
+            <div className="App">
+            </div>
+          </Route>
           <Route exact path="/create-algo">
             <div className="App">
               <AlgoPage/>

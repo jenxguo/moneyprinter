@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SelectSearch from 'react-select-search';
-import Papa from 'papaparse';
+import stocks from './stocks.csv';
 
 import * as $ from "jquery";
 
@@ -10,7 +10,7 @@ class AlgoPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      options: []
+      options: [{name: 'dumb', value: 'bitch'}]
     };
   }
 
@@ -21,49 +21,36 @@ class AlgoPage extends Component {
 
   //parse csv
   successFunction(data) {
-    console.log(data)
     var lines = data.split("\n");
-    console.log(lines)
     while( typeof lines[0] !== "undefined" ){
             var line = lines.shift();
-            var options = [];
-            options.push({name: line, value: lines[0]});
+            var options = this.state.options;
+            options.push({name: line, value: line});
             this.setState({options});
         }
   }
 
-  // readTextFile(file)
-  // {
-  //     var rawFile = new XMLHttpRequest();
-  //     rawFile.open("GET", file, false);
-  //     rawFile.onreadystatechange = function ()
-  //     {
-  //         if(rawFile.readyState === 4)
-  //         {
-  //             if(rawFile.status === 200 || rawFile.status == 0)
-  //             {
-  //                 var allText = rawFile.responseText;
-  //                 alert(allText);
-  //             }
-  //         }
-  //     }
-  //     rawFile.send(null);
-  // }
-
   componentDidMount() {
     $.ajax({
       type: "GET",
-      url: "stocks.csv",
+      url: stocks,
       dataType: 'text',
     }).done(this.successFunction.bind(this));
   }
 
+  getOptions() {
+    console.log(this.state.options)
+    return (this.state.options)
+  }
+
   render() {
+    var options = this.getOptions()
 
     return(
       <div className = "algopage">
+
         <h1>Create an Algorithm</h1>
-        <SelectSearch options={this.state.options} search='true' value="sv" name="language" placeholder="Choose your language" />
+        <SelectSearch options={options} search='true' value="st" name="ticker" placeholder="Stock Ticker" />
         <select class="dropdown" multiple="">
             <option value="">State</option>
             <option value="AL">Alabama</option>
